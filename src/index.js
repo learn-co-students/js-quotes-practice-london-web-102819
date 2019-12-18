@@ -101,23 +101,26 @@ const createQuoteCard = (quote) => {
 
 //ADD NEW QUOTE
 const form = document.querySelector('#new-quote-form');
-const QuoteInput = document.querySelector('#new-quote').value;
-const AuthorInput = document.querySelector('#author').value;
+const quoteInput = document.querySelector('#new-quote');
+const authorInput = document.querySelector('#author');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  createNewQuote(QuoteInput, AuthorInput).then((newquote) => {
-    return renderQuotes(newquote)
-  });
+  createNewQuote(quoteInput.value, authorInput.value)
+    .then((newquote) => {
+      renderQuotes([newquote]);
+      quoteInput.value = '';
+    });
 });
 
-const createNewQuote = (QuoteInput, AuthorInput) => {
+const createNewQuote = (quote, author) => {
   return fetch(QUOTES_URL, {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      quote: QuoteInput,
-      author: AuthorInput
+      quote: quote,
+      author: author,
+      likes: []
     })
   })
     .then(resp => resp.json())
