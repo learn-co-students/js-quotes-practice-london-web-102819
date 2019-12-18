@@ -128,27 +128,3 @@ const createNewQuote = (quote, author) => {
       console.error(error)
     });
 };
-
-{/* <form id="new-quote-form">
-      <div class="form-group">
-        <label for="new-quote">New Quote</label>
-        <input type="text" class="form-control" id="new-quote" placeholder="Learn. Love. Code.">
-      </div>
-      <div class="form-group">
-        <label for="Author">Author</label>
-        <input type="text" class="form-control" id="author" placeholder="Flatiron School">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
- */}
-
-{/* <li class='quote-card'>
-  <blockquote class="blockquote">
-    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer class="blockquote-footer">Someone famous</footer>
-    <br>
-    <button class='btn-success'>Likes: <span>0</span></button>
-    <button class='btn-danger'>Delete</button>
-  </blockquote>
-</li>
- */}
