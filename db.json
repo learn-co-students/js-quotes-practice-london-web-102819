@@ -31,9 +31,16 @@
       "author": "Sandra Day O'Connor"
     },
     {
-      "id": 7,
-      "quote": "Tell me and I forget, teach me and I remember, involve me and I learn.",
-      "author": "Benjamin Franklin"
+      "quote": "I love coding",
+      "author": "Qing",
+      "likes": [],
+      "id": 8
+    },
+    {
+      "quote": "Life is wonderful",
+      "author": "Matthew",
+      "likes": [],
+      "id": 9
     }
   ],
   "likes": [
@@ -195,14 +202,6 @@
       "id": 44
     },
     {
-      "quoteId": 7,
-      "id": 45
-    },
-    {
-      "quoteId": 7,
-      "id": 46
-    },
-    {
       "quoteId": 3,
       "id": 47
     },
@@ -235,8 +234,8 @@
       "id": 58
     },
     {
-      "quoteId": 7,
-      "id": 59
+      "quoteId": 8,
+      "id": 60
     }
   ]
 }
