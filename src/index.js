@@ -8,45 +8,50 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 // create a quote:
 function createAQuote (quoteInfo){
-//creating HTML elements for READ:
+    //creating HTML elements for READ:
 
-const ul = document.querySelector('#quote-list');
-const quoteLi = document.createElement('li');
-quoteLi.classList.add('quote-cart');
-ul.appendChild(quoteLi); 
+    const ul = document.querySelector('#quote-list');
+    const quoteLi = document.createElement('li');
+    quoteLi.classList.add('quote-cart');
+    ul.appendChild(quoteLi); 
 
-const blockquote = document.createElement("blockquote");
-blockquote.classList.add('blockquote');
-blockquote.id = quoteInfo.id; 
-quoteLi.appendChild (blockquote); 
+    const blockquote = document.createElement("blockquote");
+    blockquote.classList.add('blockquote');
+    blockquote.id = quoteInfo.id; 
+    quoteLi.appendChild (blockquote); 
 
 
-const p = document.createElement ('p');
-p.classList.add('mb-0');
-p.innerText = quoteInfo.quote;
+    const p = document.createElement ('p');
+    p.classList.add('mb-0');
+    p.innerText = quoteInfo.quote;
 
-const footer = document.createElement('footer');
-footer.classList.add('blockquote-footer');
-footer.innerText = quoteInfo.author; 
+    const footer = document.createElement('footer');
+    footer.classList.add('blockquote-footer');
+    footer.innerText = quoteInfo.author; 
 
-let br = document.createElement('br');
+    let br = document.createElement('br');
 
-//like button & action:
-const likeBtn = document.createElement('button');
-likeBtn.innerText = 'Likes:';
-likeBtn.classList.add('btn-success');
-let likeSpan = document.createElement('span');
-likeSpan.innerText = quoteInfo.likes.length;
-likeBtn.appendChild(likeSpan); 
-likeBtn.addEventListener('click', increaseLike);
+    //like button & action:
+    const likeBtn = document.createElement('button');
+    likeBtn.innerText = 'Likes:';
+    likeBtn.classList.add('btn-success');
+    let likeSpan = document.createElement('span');
+    if (quoteInfo.likes){
+    likeSpan.innerText = quoteInfo.likes.length
+    } else {
+        likeSpan.innerText = 0; 
+    }
+   
+    likeBtn.appendChild(likeSpan); 
+    likeBtn.addEventListener('click', increaseLike);
 
-//delete button & action:
-const deleteBtn = document.createElement('button');
-deleteBtn.innerText = 'Delete'; 
-deleteBtn.classList.add('btn-danger');
-deleteBtn.addEventListener('click', deleteQuote);
+    //delete button & action:
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerText = 'Delete'; 
+    deleteBtn.classList.add('btn-danger');
+    deleteBtn.addEventListener('click', deleteQuote);
 
-blockquote.append(p,footer,br, likeBtn,deleteBtn); 
+    blockquote.append(p,footer,br, likeBtn,deleteBtn); 
 };
 
 //incease Likes of A quote:
