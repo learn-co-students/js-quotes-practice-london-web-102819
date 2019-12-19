@@ -6,6 +6,40 @@ document.addEventListener("DOMContentLoaded", function(){
     .then(resp=>resp.json())
     .then(quotes => quotes.forEach(quote => createAQuote(quote)));
 });
+//toggle switch to sort: 
+
+const body = document.body;
+const h1 = document.querySelector('h1');
+const sort = document.createElement('h6');
+sort.innerText = '⬆️ Sort List';
+
+const sortToggleLabel = document.createElement('label');
+sortToggleLabel.classList.add('switch')
+
+body.insertBefore(sortToggleLabel, h1);
+body.insertBefore(sort, h1);
+
+
+const checkbox = document.createElement('input');
+checkbox.setAttribute('type', 'checkbox');
+const span = document.createElement('span');
+span.classList.add('slider');
+span.classList.add('round');
+
+
+sortToggleLabel.append(checkbox, span);
+// sortToggleLabel.insertBefore(sort, checkbox);
+
+checkbox.addEventListener('change', function(){
+    if(this.checked){
+        console.log(this);
+    } else{
+
+    }
+});
+
+
+ 
 // create a quote:
 function createAQuote (quoteInfo){
     //creating HTML elements for READ:
@@ -36,11 +70,12 @@ function createAQuote (quoteInfo){
     likeBtn.innerText = 'Likes:';
     likeBtn.classList.add('btn-success');
     let likeSpan = document.createElement('span');
+
     if (quoteInfo.likes){
     likeSpan.innerText = quoteInfo.likes.length
     } else {
         likeSpan.innerText = 0; 
-    }
+    };
    
     likeBtn.appendChild(likeSpan); 
     likeBtn.addEventListener('click', increaseLike);

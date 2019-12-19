@@ -39,21 +39,6 @@
       "quote": "Live, Love, Life",
       "author": "FF Chen",
       "id": 9
-    },
-    {
-      "quote": "Baby Said It didn't work. So I'm checking ",
-      "author": "FF Chen",
-      "id": 10
-    },
-    {
-      "quote": "Live, Love, Life (Creation bug checking)",
-      "author": "FF Chen",
-      "id": 11
-    },
-    {
-      "quote": "let's check it again. Hopefully bug fixed. ",
-      "author": "FF Chen",
-      "id": 12
     }
   ],
   "likes": [
@@ -423,6 +408,21 @@
       "quoteId": 12,
       "createdAt": "2019-12-19T14:35:45.466Z",
       "id": 88
+    },
+    {
+      "quoteId": 9,
+      "createdAt": "2019-12-19T14:36:40.624Z",
+      "id": 89
+    },
+    {
+      "quoteId": 9,
+      "createdAt": "2019-12-19T14:36:41.836Z",
+      "id": 90
+    },
+    {
+      "quoteId": 9,
+      "createdAt": "2019-12-19T14:36:42.760Z",
+      "id": 91
     }
   ]
 }
