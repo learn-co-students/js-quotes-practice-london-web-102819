@@ -28,17 +28,46 @@ span.classList.add('round');
 
 
 sortToggleLabel.append(checkbox, span);
-// sortToggleLabel.insertBefore(sort, checkbox);
 
-checkbox.addEventListener('change', function(){
-    if(this.checked){
-        console.log(this);
+//sorting quotes: 
+const sortQuotes = () =>{
+    let liList = [];
+    let liEls = document.querySelectorAll('.quote-cart');
+    let ul = document.querySelector('#quote-list');
+    liList=[...liEls];
+    let compareFunc;
+    if(checkbox.checked){
+        compareFunc = function(a,b){
+            let contentA=a.querySelector('p').innerText;
+            let contentB=b.querySelector('p').innerText;
+            if (contentA < contentB){
+                return -1;
+            }
+            if (contentA>contentB){ 
+                return 1;
+            }
+            return 0
+        };
     } else{
-
+        compareFunc = function(a,b){
+            let contentA= parseInt(a.querySelector('.blockquote').id);
+            let contentB= parseInt(b.querySelector('.blockquote').id);
+            if (contentA < contentB){
+                return -1;
+            }
+            if (contentA>contentB){ 
+                return 1;
+            }
+            return 0;
+        };
     }
-});
-
-
+    let sortedList = liList.sort(compareFunc);
+    sortedList.forEach(liEl => {
+        // debugger
+        ul.appendChild(liEl)
+    });
+};
+checkbox.addEventListener('change', sortQuotes); 
  
 // create a quote:
 function createAQuote (quoteInfo){
@@ -158,6 +187,9 @@ function newQuote(e){
 
     fetch ('http://localhost:3000/quotes',configObj)
     .then (resp => resp.json())
-    .then (quote => createAQuote(quote));
+    .then (quote => { 
+        createAQuote(quote);
+        sortQuotes(); 
+    });
 };
 
