@@ -108,6 +108,41 @@ function createAQuote (quoteInfo){
    
     likeBtn.appendChild(likeSpan); 
     likeBtn.addEventListener('click', increaseLike);
+    
+
+    //update button & action: 
+    const updateBtn = document.createElement('button');
+    updateBtn.innerText = 'Update'; 
+    updateBtn.classList.add('btn-change'); 
+
+    updateBtn.addEventListener('click', hideAQuote);
+
+    //update user hidden form
+    let form = document.createElement('form');
+    form.hidden = true; 
+    form.id = 'update_form';
+
+    let label = document.createElement('label'); 
+    label.innerText = 'Update Quote'; 
+    label.id = 'updated-quote';
+    let textArea = document.createElement('textarea'); 
+    textArea.id = 'new_quote';
+    textArea.value = quoteInfo.quote; 
+
+    let brk = document.createElement('br');
+    let brk2 = document.createElement('br');
+
+    let authorInput = document.createElement('input');
+    authorInput.id = 'new_author'; 
+    authorInput.value =quoteInfo.author; 
+
+    let submit = document.createElement('button');
+    submit.addEventListener('click', updateAQuote);
+
+    submit.innerText = 'Submit'; 
+    form.append(label, brk, textArea, brk2, authorInput, submit);
+
+
 
     //delete button & action:
     const deleteBtn = document.createElement('button');
@@ -115,8 +150,55 @@ function createAQuote (quoteInfo){
     deleteBtn.classList.add('btn-danger');
     deleteBtn.addEventListener('click', deleteQuote);
 
-    blockquote.append(p,footer,br, likeBtn,deleteBtn); 
+    blockquote.append(p,footer, form, br, likeBtn, deleteBtn, updateBtn); 
 };
+//update a quote:
+function hideAQuote(e){
+    e.preventDefault(); 
+    let quoteP = e.target.parentElement.querySelector('p');
+    let quoteAuthor = e.target.parentElement.querySelector('footer');
+    let form = e.target.parentElement.querySelector('#update_form');
+
+    form.hidden = false; 
+    quoteP.hidden = true; 
+    quoteAuthor.hidden = true; 
+};
+
+function updateAQuote(e){
+    e.preventDefault(); 
+    let form = e.target.parentElement;
+
+    let updateData = {
+        quote: form.querySelector('#new_quote').value,
+        author:  form.querySelector('#new_author').value
+    }
+
+    let quoteId = e.target.parentElement.parentElement.id; 
+    let configObj = {
+        method: "PATCH",
+        headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+         },
+        body: JSON.stringify(updateData)
+    }; 
+
+    fetch(`http://localhost:3000/quotes/${quoteId}`, configObj)
+    .then(resp => resp.json())
+    .then(() =>{
+        form.hidden = true;
+        let parent = e.target.parentElement.parentElement;
+        let p = parent.querySelector('p');
+        p.innerText = updateData.quote;
+        p.hidden = false; 
+
+        let footer = parent.querySelector('footer');
+        footer.innerText = updateData.author; 
+        footer.hidden = false; 
+    });
+
+
+}
 
 //incease Likes of A quote:
 function increaseLike(e){
@@ -192,4 +274,3 @@ function newQuote(e){
         sortQuotes(); 
     });
 };
-
