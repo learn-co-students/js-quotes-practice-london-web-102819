@@ -7,11 +7,11 @@ const quoteList = document.querySelector("#quote-list"),
 
 function getQuotes(sorted = false) {
     let URL;
-    console.log(sorted);
+    
     if (!sorted) {
         URL = "http://localhost:3000/quotes?_embed=likes";
     } else {
-        URL = "http://localhost:3000/quotes?_sort=author";
+        URL = "http://localhost:3000/quotes?_embed=likes&_sort=author";
     }
     fetch(URL)
         .then(data => data.json())
@@ -165,8 +165,17 @@ function postQuote(quoteData) {
 document.addEventListener('DOMContentLoaded', e => {
     getQuotes();
 });
+
 sort.addEventListener('click', e => {
-    getQuotes(true);
+    
+    if (sort.innerText === "Sort by authors") {
+        sort.innerText = "Sort by id";
+        getQuotes(true);
+    } else {
+        sort.innerText = "Sort by authors";
+        getQuotes();
+    }
+    
 })
 
 form.addEventListener('submit', e => {

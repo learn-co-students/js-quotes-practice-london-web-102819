@@ -51,9 +51,14 @@
       "author": "Sonia Sotomayore"
     },
     {
-      "quote": "Hey girl",
-      "author": "Johnny!",
+      "quote": "Never say never",
+      "author": "Justin Bieber",
       "id": 11
+    },
+    {
+      "quote": "Where are you guys?",
+      "author": "Somebody",
+      "id": 12
     }
   ],
   "likes": [
@@ -66,6 +71,26 @@
       "quoteId": 1,
       "createdAt": 1576688200000,
       "id": 2
+    },
+    {
+      "quoteId": 12,
+      "createdAt": 1576747035000,
+      "id": 3
+    },
+    {
+      "quoteId": 12,
+      "createdAt": 1576747053000,
+      "id": 4
+    },
+    {
+      "quoteId": 12,
+      "createdAt": 1576747054000,
+      "id": 5
+    },
+    {
+      "quoteId": 12,
+      "createdAt": 1576747055000,
+      "id": 6
     }
   ]
 }
